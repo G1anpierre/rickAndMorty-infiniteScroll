@@ -17,14 +17,24 @@ ul {
   gap: 10px;
 }
 
-li {
+.list {
   text-align: center;
   display: grid;
   grid-template-rows: 85px auto;
+  opacity: 0;
+  transition: opacity 2s ease-in 0.5s;
+}
+
+.is-visible {
+  opacity: 1;
 }
 
 img {
   vertical-align: middle;
   width: 100%;
   height: auto;
+}
+
+.load-more-border {
+  margin-top: 300px;
 }
