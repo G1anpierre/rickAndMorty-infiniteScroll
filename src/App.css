@@ -1,0 +1,30 @@
+.App {
+  background-color: black;
+  color: white;
+}
+
+.wrapper {
+  padding: 15px;
+  max-width: 1280px;
+  margin: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+  gap: 10px;
+}
+
+li {
+  text-align: center;
+  display: grid;
+  grid-template-rows: 85px auto;
+}
+
+img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
