@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from 'react'
 import reactLogo from './assets/react.svg'
 import {useInView} from 'react-intersection-observer'
 import {useRickAndMorty} from '../hooks/rickAndMorty'
+
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     },
   })
 
+  // interception the cards
   useEffect(() => {
     const items = document.querySelectorAll('.list')
     const observer = new IntersectionObserver(
@@ -34,6 +36,27 @@ function App() {
     })
   })
 
+  // interception of image for lazy loading
+  useEffect(() => {
+    const images = document.querySelectorAll('.image')
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const intersecting = entry.isIntersecting
+        if (intersecting) {
+          const image = entry.target
+          if (image.dataset.src) {
+            image.src = image.dataset.src
+          }
+          observer.unobserve(image)
+        }
+      })
+    })
+
+    images.forEach(item => {
+      observer.observe(item)
+    })
+  })
+
   return (
     <div className="App">
       <div className="wrapper">
@@ -45,7 +68,11 @@ function App() {
               {rickAndMorty.characters.map((character, index) => (
                 <li key={`${character.id}-${index}`} className="list">
                   <h2>{character.name}</h2>
-                  <img src={character.image} alt={character.name} />
+                  <img
+                    src={character.image}
+                    alt={character.name}
+                    className="image"
+                  />
                 </li>
               ))}
             </ul>
