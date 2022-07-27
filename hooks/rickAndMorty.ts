@@ -35,12 +35,6 @@ export const useRickAndMorty = () => {
     }
   }, [])
 
-  // useEffect(() => {
-  //   if (isInView) {
-  //     loadMoreCards()
-  //   }
-  // }, [isInView])
-
   useEffect(() => {
     window.sessionStorage.setItem(
       'rickAndMorty',
